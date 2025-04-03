@@ -1,7 +1,15 @@
 #!/bin/bash
 
 # Updated - 03 April 2025
-# Script to backup source directory to destination
+### Script to backup source directory to destination
+
+# Make sure that this script is not source but executed directly
+# As sourcing it will run the script in the current shell
+# This will make sure that exported variables or trap settings are not left behind
+if [[ ${BASH_SOURCE[0]} != "$0" ]]; then
+    echo "Don't source this file. Execute it."
+    return 1
+fi
 
 # Adjustable Variables
 SRC="/path/to/backup/source"
